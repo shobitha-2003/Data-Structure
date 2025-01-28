@@ -1,0 +1,63 @@
+import java.util.Scanner;
+class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+public class RevLinkedList{
+    Node head;
+
+    void insert(int value){
+        Node newNode = new Node(value);
+        if(head==null){
+            head = newNode;
+            return;
+        }else{
+            Node temp = head;
+            while(temp.next!=null){
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+
+    }
+    void directDisplay(){
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data);
+            System.out.print("->");
+            temp = temp.next;
+        }
+    }
+    void reversing(){
+        Node prev = null;
+        Node current = head;
+        Node next;
+        while(current!=null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+
+    }
+
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    RevLinkedList list = new RevLinkedList();
+    System.out.println("Enter the number of elements");
+    int num = sc.nextInt();
+    for(int i=0;i<num;i++){
+        list.insert(sc.nextInt());
+    }
+    list.directDisplay();
+    System.out.println();
+    list.reversing();
+    list.directDisplay();
+}
+}
