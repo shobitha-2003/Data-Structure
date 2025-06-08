@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class FindPairInArrayForGivenSumForAscOrder {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the no of elements");
+        int num = sc.nextInt();
+        System.out.println("Enter the elements");
+        int[] array = new int[num];
+        for(int i=0;i<num;i++){
+            array[i] = sc.nextInt();
+        }
+        System.out.println("Enter sum number");
+        int sum = sc.nextInt();
+        findPair(array,sum);
+    }
+    public static void findPair(int[] array,int sum){
+        int low = 0,high = array.length-1;
+        while(low<high){
+            if(array[low] + array[high] > sum)
+            high--;
+            if(array[low] + array[high] < sum)
+            low++;
+            if(array[low] + array[high] == sum){
+                System.out.println(array[low]+" "+array[high]);
+                low++;
+                high--;
+            }
+        }
+    } 
+}
