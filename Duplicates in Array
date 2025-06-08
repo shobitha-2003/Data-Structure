@@ -18,19 +18,17 @@ public class DuplicateInArray{
     public static void findDuplicate(int[] array){
 
         HashSet<Integer> seen = new HashSet<>();
-        HashSet<Integer> duplicates = new HashSet<>();
-
-        for(int num:array){
-            if(!seen.add(num)){
-                duplicates.add(num);
+        boolean dupliExist = true;
+        for(int i=0;i<array.length;i++){
+            if(seen.contains(array[i])){
+                dupliExist = false;
+                System.out.print(array[i] +" ");
+            }else{
+                seen.add(array[i]);
             }
         }
-        if(duplicates.isEmpty()){
-            System.out.println("No Duplicates Found");
-        }else{
-            for(int num:duplicates){
-                System.out.print(num+" ");
-            }
+        if(dupliExist){
+            System.out.println("No duplicates present");
         }
     }
 }
