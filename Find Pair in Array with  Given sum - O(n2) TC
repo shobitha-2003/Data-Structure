@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class FindPairInArrayWithGivenSum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number");
+        int num = sc.nextInt();
+        int[] array = new int[num];
+        System.err.println("Enter the elments");
+        for(int i=0;i<num;i++){
+            array[i] = sc.nextInt();
+        }
+        System.out.println("Enter the number to sum");
+        int sum = sc.nextInt();
+        findSum(array,sum);
+    }
+    public static void findSum(int[] array,int sum){
+        boolean pair = false;
+        for(int i=0;i<array.length;i++){
+            for(int j=i+1;j<array.length;j++){
+                if(array[i]+ array[j] == sum){
+                    pair = true;
+                    System.out.println(array[i]+" "+array[j]);
+                }
+            }
+        }
+        if(!pair){
+            System.out.println("pair not found");
+        }
+    }
+}
